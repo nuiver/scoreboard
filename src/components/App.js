@@ -1,11 +1,19 @@
 import React from 'react'
+import Scoreboard from '../containers/Scoreboard'
 import Title from './Title'
 import './App.sass'
 
 class App extends React.Component {
+
   render() {
+    const { players } = this.props
+
     return (
-      <Title label="Scoreboard" />
+      <div className="app">
+
+        <Title label="Scoreboard" />
+        <Scoreboard players={ players } />
+      </div>
     )
   }
 }
