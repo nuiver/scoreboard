@@ -1,10 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import chai, { expect } from 'chai'
+import spies from 'chai-spies'
 import chaiEnzyme from 'chai-enzyme'
 import Scoreboard from './Scoreboard'
 import Player from '../components/Player'
 
+chai.use(spies)
 chai.use(chaiEnzyme())
 
 const players = [
@@ -21,8 +23,8 @@ const players = [
     points: 0,
   }
 ]
-
-const app = shallow(<Scoreboard players={ players } />)
+const plusOneSpy = chai.spy()
+const app = shallow(<Scoreboard players={ players } plusOne={ plusOneSpy } />)
 
 describe('<Scoreboard />', () => {
   it('has a wrapping ul tag', () => {
@@ -39,8 +41,8 @@ describe('<Scoreboard />', () => {
     })
 
     it('renders both players', () => {
-      expect(app).to.contain(<Player key={0} { ...players[0] } />)
-      expect(app).to.contain(<Player key={1} { ...players[1] } />)
+      expect(app).to.contain(<Player key={0} { ...players[0] } onChange={ plusOneSpy } />)
+      expect(app).to.contain(<Player key={1} { ...players[1] } onChange={ plusOneSpy } />)
     })
   })
 })
