@@ -1,6 +1,7 @@
 import React from 'react'
 import Scoreboard from '../containers/Scoreboard'
 import Title from './Title'
+import CreatePlayer from './CreatePlayer'
 import './App.sass'
 
 const playerData = [
@@ -85,6 +86,7 @@ class App extends React.Component {
 
         <Title label="Scoreboard" />
         <Scoreboard players={ players } plusOne={ this.plusOne.bind(this) } />
+        <CreatePlayer />
       </div>
     )
   }
