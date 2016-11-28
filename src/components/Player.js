@@ -3,23 +3,13 @@ import './Player.sass'
 
 class Player extends Component {
 
-  constructor(props) {
-    super()
-
-    this.state = {
-      points: props.points
-    }
-  }
-
   plusOne() {
-    this.setState({
-      points: this.state.points + 1
-    })
+    const { playerId, onChange } = this.props
+    onChange(playerId)
   }
 
   render() {
-    const { avatar, name } = this.props
-    const { points } = this.state
+    const { playerId, name, avatar, points, rank } = this.props
 
     return (
       <li className="player">
