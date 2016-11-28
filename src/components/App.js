@@ -39,12 +39,17 @@ class App extends React.Component {
       if (player.playerId === playerId) {
         return Object.assign({}, player, { points: player.points + 1 })
       }
-
       return player
     })
 
     this.setState({
-      players: newPlayers
+      players: this.orderPlayers(newPlayers)
+    })
+  }
+
+  orderPlayers(players) {
+    return players.concat().sort((a, b) => {
+      return b.points - a.points
     })
   }
 

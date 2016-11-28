@@ -1,6 +1,5 @@
 import React from 'react'
 import deepFreeze from 'deep-freeze-node'
-// Normally, you would use deep-freeze in tests only
 import { shallow } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
@@ -32,4 +31,18 @@ describe('<App />', () => {
     })
   })
 
+  describe('orderPlayers(players)', () => {
+    const initialPlayers = deepFreeze([
+      { name: 'Silver', points: 2 },
+      { name: 'Bronze', points: 1 },
+      { name: 'Gold', points: 3 },
+    ])
+
+    it('returns the players ordered by their points, desc', () => {
+      const orderedPlayers = app.instance().orderPlayers(initialPlayers)
+      expect(orderedPlayers[0].name).to.eq('Gold')
+      expect(orderedPlayers[1].name).to.eq('Silver')
+      expect(orderedPlayers[2].name).to.eq('Bronze')
+    })
+  })
 })
