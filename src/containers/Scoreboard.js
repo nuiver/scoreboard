@@ -5,7 +5,7 @@ import Player from '../components/Player'
 class Scoreboard extends React.Component {
 
   renderPlayer(player, index) {
-    return <Player key={ index } { ...player } />
+    return <Player key={ index } { ...player } onChange={ this.props.plusOne } />
   }
 
   render() {
@@ -13,7 +13,7 @@ class Scoreboard extends React.Component {
 
     return (
       <ul className="scoreboard">
-        { players.map(this.renderPlayer) }
+        { players.map(this.renderPlayer.bind(this)) }
       </ul>
     )
   }
