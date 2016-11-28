@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Player.sass'
 
 class Player extends Component {
   render() {
