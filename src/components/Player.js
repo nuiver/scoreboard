@@ -6,10 +6,11 @@ class Player extends Component {
   plusOne() {
     const { playerId, onChange } = this.props
     onChange(playerId)
+    this.desidePrize()
   }
 
   render() {
-    const { playerId, name, avatar, points, rank } = this.props
+    let { index, playerId, name, avatar, points, rank, prize } = this.props
 
     return (
       <li className="player">
@@ -21,6 +22,7 @@ class Player extends Component {
             <span className="score">{ points }</span>
             .&nbsp;
             <span className="name">{ name }</span>
+            <span className="name">  { prize }</span>
           </h3>
         </div>
         <button onClick={ this.plusOne.bind(this) }>+1</button>
