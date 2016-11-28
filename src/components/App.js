@@ -83,7 +83,6 @@ class App extends React.Component {
 
     return (
       <div className="app">
-
         <Title label="Scoreboard" />
         <Scoreboard players={ players } plusOne={ this.plusOne.bind(this) } />
         <CreatePlayer />
